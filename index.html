@@ -1,0 +1,16 @@
+<script src="jquery.js"></script>
+<script>
+    $.ajax({
+        type: 'GET',
+        url: 'https://dev.nresports.net/mOS/test.php',
+        data: { a: 'value' },
+        success: function (data) {
+            $("#test").html(data);
+        },
+        error: function () {
+            alert("error");
+        }
+
+    });
+</script>
+<div id="test">ei toimi</div>
