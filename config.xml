@@ -1,5 +1,5 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.valtteripalonkorpi.mos" version="1.0.1">
-  <name>mOS</name>
+  <name>mOS2</name>
   <description>Testing</description>
   <author href="http://valtteri.palonkorpi.net" email="vpalonkorpi@gmail.com">Valtteri Palonkorpi</author>
   <content src="index.html"/>
