@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="jquery.js"></script>
+        <icon src="icon.png"/>
+        <script>
+            $.ajax({
+                type: 'GET',
+                url: 'https://projects.nresports.net/p/mOS/auth/auth.php',
+                data: { a: 'value' },
+                success: function (data) {
+                    $("#test").html(data);
+                },
+                error: function () {
+                    $("body").html('No internet connection.');
+                }
+
+            });
+            
+            if (localStorage.getItem("connectedacc") === null) {
+                window.location = 'index.html';
+            }
+            function logout() {
+                localStorage.clear();
+                window.location = 'index.html';
+            }
+            $.ajax({
+                type: 'GET',
+                url: 'https://projects.nresports.net/p/mOS/auth/auth2.php',
+                data: { b: 'update.' + localStorage.getItem("connectedacc") },
+                success: function (data) {
+                    $('.code').text(data);
+                },
+                error: function () {
+                    $("body").html('No internet connection.');
+                }
+
+            });
+            time=setInterval(function(){
+                $.ajax({
+                type: 'GET',
+                url: 'https://projects.nresports.net/p/mOS/auth/auth2.php',
+                data: { b: 'update.' + localStorage.getItem("connectedacc") },
+                success: function (data) {
+                    $('.code').text(data);
+                },
+                error: function () {
+                    $("body").html('No internet connection.');
+                }
+
+            });
+            },20000);
+    </script>
+    </head>
+    <body>
+        <div class="header">
+            <font face="Montserrat-UltraLight" style="font-size: 40px;">
+                mOS 
+            </font>
+        </div>
+        <div id="parent">
+            <div class="parent_cont">
+                Authentication Code
+                <div class="code">000000</div>
+                <div class="loading"><div class="loader"></div></div>
+                <div style="font-size: 15px;" onclick="logout();">Remove this device</div>
+            </div>
+        </div>
+    </body>
+</html>

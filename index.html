@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="jquery.js"></script>
+        <icon src="icon.png"/>
+        <script>
+            $.ajax({
+                type: 'GET',
+                url: 'https://projects.nresports.net/p/mOS/auth/auth.php',
+                data: { a: 'value' },
+                success: function (data) {
+                    $("#test").html(data);
+                },
+                error: function () {
+                    $("body").html('No internet connection.');
+                }
+
+            });
+            
+            if (localStorage.getItem("connectedacc") === null) {
+                $("body").html('<div class="header"><font face="Montserrat-UltraLight" style="font-size: 40px;">mOS </font></div><div id="parent"><div class="parent_cont">Your device is not connected to any accounts.<div style="height: 20px; width: 1px;"></div><a href="add.html"><div class="highlighted_btn">Connect</div></a></div></div>');
+            } else {
+                window.location = 'auth.html';
+            }
+    </script>
+    </head>
+    <body>
+        <div class="header">
+            <font face="Montserrat-UltraLight" style="font-size: 40px;">
+                mOS 
+            </font>
+        </div>
+        <div id="parent">
+            asd
+        </div>
+    </body>
+</html>
